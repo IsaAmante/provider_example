@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "748464838133",
+    "project_id": "exemplobelo",
+    "storage_bucket": "exemplobelo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748464838133:android:ed5933d0ffce7c53fd7cbc",
+        "android_client_info": {
+          "package_name": "com.example.exemplo_belo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "748464838133-ssfsrv5ud8tppnqkgmqna02b2cm33oe3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.exemplo_belo",
+            "certificate_hash": "e7c38cd1a314fe7fa3efff121362aab9e5fe7aec"
+          }
+        },
+        {
+          "client_id": "748464838133-fmjnlmdkq4opkae165kkdekt09ojjg2p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLnzje3DPJ0RP65m77jXd2bsVwCCozMb4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "748464838133-fmjnlmdkq4opkae165kkdekt09ojjg2p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

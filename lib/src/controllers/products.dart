@@ -1,34 +1,31 @@
 import 'package:exemplo_belo/src/controllers/controller.dart';
+import 'package:exemplo_belo/src/models/product_model.dart';
+import 'package:exemplo_belo/src/repositories/repository.dart';
 
 class ProductsController extends Controller {
-  ProductsController() : _text = 'Clique para começar...';
-  String _text;
-  bool _switcher = false;
+  ProductsController(this._repository);
+  Repository _repository;
 
-  Map<bool, String> _texts = {
-    true: "O texto...",
-    false: "...muda!",
-  };
+  List<Product>? _products, _filteredProducts;
 
-  String get text => _text;
+  List<Product> get products => List.unmodifiable(_filteredProducts ?? []);
 
-  // Quando usamos algum await, é necessário usar
-  // o async.
-  changeText() async {
-    setStatus(Status.loading);
-
-    // Esse delayed é só pra dar tempo de aparecer
-    // o carregamento na tela.
-    await Future.delayed(Duration(seconds: 1));
-
-    _switcher = !_switcher;
-    _text = _texts[_switcher]!;
-
-    setStatus(Status.success);
+  Future<List<Product>> fetchProducts() async {
+    _products = await _repository.getProducts();
+    _filteredProducts = _products;
+    return _products!;
   }
 
-  secretChangeText() {
-    _switcher = false;
-    setStatus(Status.batatinha);
+  void filterProducts(String filter) {
+    setStatus(Status.loading);
+    if (filter.isNotEmpty) {
+      _filteredProducts = _products
+          ?.where((product) =>
+              product.name.toLowerCase().contains(filter.toLowerCase()))
+          .toList();
+    } else {
+      _filteredProducts = _products;
+    }
+    setStatus(Status.success);
   }
 }
