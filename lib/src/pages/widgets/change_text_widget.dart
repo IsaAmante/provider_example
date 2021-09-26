@@ -1,4 +1,4 @@
-import 'package:exemplo_belo/src/controllers/products.dart';
+/* import 'package:exemplo_belo/src/controllers/products.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -79,3 +79,4 @@ class ChangeTextWidget extends StatelessWidget {
     );
   }
 }
+ */

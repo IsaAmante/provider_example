@@ -32,7 +32,9 @@ class AuthController extends Controller {
   }
 
   signOut() async {
+    setStatus(Status.loading);
     await googleSignIn.disconnect();
     FirebaseAuth.instance.signOut();
+    setStatus(Status.success);
   }
 }

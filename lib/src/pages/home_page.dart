@@ -9,25 +9,34 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: StreamBuilder(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return ProductsPage();
-          } else if (snapshot.hasError) {
-            return Text('Something went wrong...');
-          } else if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+    return StreamBuilder(
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return ProductsPage();
+        } else if (snapshot.hasError) {
+          return Scaffold(
+            backgroundColor: Palette.primaryColor,
+            body: Center(
+              child: Text('Algo deu errado. Tente novamente!!'),
+            ),
+          );
+        } else if (snapshot.connectionState == ConnectionState.waiting) {
+          return Scaffold(
+            backgroundColor: Palette.primaryColor,
+            body: Center(
               child: CircularProgressIndicator(
                 color: Palette.secondaryColor,
               ),
-            );
-          } else {
-            return SignupWidget();
-          }
-        },
-      ),
+            ),
+          );
+        } else {
+          return Scaffold(
+            backgroundColor: Palette.primaryColor,
+            body: SignupWidget(),
+          );
+        }
+      },
     );
   }
 }
